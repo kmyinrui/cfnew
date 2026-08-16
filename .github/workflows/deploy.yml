@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
+        env:
+          CF_API_TOKEN: *** secrets.CF_API_TOKEN }}
+        run: |
+          npm install -g wrangler
+          wrangler deploy --compatibility-date 2026-01-20
